@@ -7,7 +7,8 @@ from typing import Generator, List, Tuple
 
 from langchain.chains import ConversationalRetrievalChain
 from langchain.memory import ConversationBufferWindowMemory
-from langchain_core.messages import HumanMessage, AIMessage
+from langchain.prompts import PromptTemplate
+from langchain_core.messages import AIMessage, HumanMessage
 
 import config
 from rag.llm import get_llm
@@ -27,8 +28,6 @@ Lịch sử trò chuyện:
 Câu hỏi: {question}
 
 Trả lời chi tiết, rõ ràng bằng tiếng Việt hoặc ngôn ngữ phù hợp với câu hỏi:"""
-
-from langchain.prompts import PromptTemplate
 
 
 def _build_chain() -> ConversationalRetrievalChain:
@@ -101,7 +100,7 @@ def query(question: str) -> Tuple[str, List[dict]]:
         if key not in seen:
             seen.add(key)
             sources.append({
-                "source": f"{src}" + (f" (trang {page + 1})" if page != "" else ""),
+                "source": f"{src}" + (f" (trang {page + 1})" if isinstance(page, int) else ""),
                 "content": doc.page_content[:300].strip(),
             })
 

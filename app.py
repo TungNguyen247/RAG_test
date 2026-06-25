@@ -5,8 +5,7 @@ Chạy: python app.py
 from __future__ import annotations
 
 import os
-import tempfile
-from typing import List, Tuple
+from typing import Any, List, Tuple
 
 import gradio as gr
 
@@ -27,7 +26,7 @@ footer { display: none !important; }
 
 # ─── Callbacks ────────────────────────────────────────────────────────────────
 
-def upload_documents(files: List[tempfile._TemporaryFileWrapper]) -> str:
+def upload_documents(files: List[Any]) -> str:
     """Xử lý upload và index tài liệu."""
     if not files:
         return "⚠️ Vui lòng chọn ít nhất một file."
