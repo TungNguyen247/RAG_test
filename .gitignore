@@ -1,0 +1,32 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.egg-info/
+dist/
+build/
+venv/
+.venv/
+env/
+
+# Secrets – không bao giờ commit!
+.env
+
+# Vector store (dữ liệu local)
+chroma_db/
+
+# Tài liệu upload (nếu lưu local)
+data/*.pdf
+data/*.docx
+data/*.txt
+data/*.md
+
+# IDE
+.vscode/
+.idea/
+*.swp
+
+# OS
+.DS_Store
+Thumbs.db
